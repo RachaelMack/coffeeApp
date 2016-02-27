@@ -25,5 +25,21 @@ navigation history that also transitions its views in and out.
     <ion-nav-view name="tab-shop"></ion-nav-view>
   </ion-tab>
 
+  <ion-content>
+      <ion-list>
+        <ion-item ng-hide="loggedIn" menu-close ng-click="login()">
+          Login
+        </ion-item>
+        <ion-item menu-close href="#/app/welcome">
+          Welcome!
+        </ion-item>
+        <ion-item ng-show="loggedIn" menu-close href="#/app/todos">
+          To Dos
+        </ion-item>
+        <ion-item ng-show="loggedIn" menu-close ng-click="logout()">
+          Logout
+        </ion-item>
+      </ion-list>
+
 
 </ion-tabs>

@@ -1,7 +1,7 @@
  
  angular.module('starter.controllers', [])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout, $http) {
+.controller('AppCtrl', function($scope, $ionicModal, $timeout, $http, $localStorage, isLoggedIn) {
 
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
@@ -12,6 +12,7 @@
 
   // Form data for the login modal
   $scope.loginData = {};
+  $scope.loggedIn = isLoggedIn;
 
   // Create the login modal that we will use later
   $ionicModal.fromTemplateUrl('templates/login.html', {
@@ -32,10 +33,14 @@
 
   // Perform the login action when the user submits the login form
   $scope.doLogin = function() {
-    $http.post("http://localhost:8080/api/login", { email: $scope.loginData.username, password: $scope.loginData.password }).then(function(result) {
+    $http.post("http://159.203.29.23:8080/api/login", { email: $scope.loginData.username, password: $scope.loginData.password }).then(function(result) {
         if (result.data.loginstatus == "success") {
             // successful login, in our example, we will just send an alert message
+            $localStorage.user_id = result.data.userid;
+            $localStorage.token = result.data.token;
+            $scope.loggedIn = true;
             alert("Congrats, you logged in with user ID "+result.data.userid);
+            $scope.modal.hide();
         }
         else {
             // unsuccessful login.  In our example, we are just sending an alert message
