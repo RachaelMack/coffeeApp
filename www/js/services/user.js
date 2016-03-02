@@ -1,4 +1,4 @@
-angular.module('starter.User', [])
+angular.module('starter.User', ['ngStorage'])
 
 .factory('User', function($http, $localStorage) {
 
@@ -7,7 +7,7 @@ angular.module('starter.User', [])
 		checkToken: function() {
 
 			if ($localStorage.hasOwnProperty("token") && $localStorage.hasOwnProperty("user_id")) {
-				return $http.post('http://localhost:8080/api/authlogin', {
+				return $http.post('http://159.203.29.23:8080/api/authlogin', {
 					user_id: $localStorage.user_id, 
 					token: $localStorage.token 
 				}).then(function(result) {

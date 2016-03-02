@@ -1,0 +1,28 @@
+<ion-view view-title="Create a Cup">
+  <ion-content class="padding">
+
+<h1>Create a Cup</h1>
+    
+    <div class="list list-inset">
+	  <label class="item item-input">
+	    <input type="text" ng-model="newPost.title" placeholder="What is the name of your flavour?">
+	  </label>
+	  <label class="item item-input">
+	    <input type="text" ng-model="newPost.hashtag" placeholder="is this flavour coffee, tea, or a specialty blend?">
+	  </label>
+	  <label class="item item-input">
+	    <input type="text" ng-model="newPost.address" placeholder="Where did you find this flavour?">
+	  </label>
+	</div>
+
+	<button ng-click="takePhoto()" class="button button-block button-dark">
+	  Take Photo
+	</button>
+
+	<button ng-click="addPost(newpost)" class="button button-block button-balanced">
+	  Create your Cup
+	</button>
+
+
+  </ion-content>
+</ion-view>
