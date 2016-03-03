@@ -162,7 +162,7 @@
       // We need to encode the returned data in this way so that it can be displayed on the phone as raw data
       // instead of a URL
       $scope.data.imageURI = data;
-      $state.go('app.postadd');
+      $state.go('tab.postadd');
 
     }, function(err) {
 
