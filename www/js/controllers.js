@@ -74,6 +74,7 @@
 
 .controller('DashCtrl', function($scope) {
   $scope.logout = function() {
+        alert ("hitting logout");
         delete $localStorage.user_id;
         delete $localStorage.token;
         $scope.loggedIn = false;
@@ -98,21 +99,19 @@
   };
 })
 
-.controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
-  $scope.chat = Chats.get($stateParams.chatId);
+.controller('BrowseCtrl', function($state, $scope, $http, $ionicLoading, $localStorage, $cordovaFileTransfer) {
+   $http.get("http://159.203.29.23:8080/api/post").then(function(result) {
+      $scope.posts = result.data;
+  }, function(error) {
+      alert("There was a problem getting your profile.  Check the logs for details.");
+      console.log(error);
+  });
 })
 
 .controller('PostCtrl', function($state, $scope, $http, $ionicLoading, $localStorage, $cordovaFileTransfer) {
   $scope.posts = [];
   $scope.data = {};
   $scope.data.imageURI = "";
-
-  // $http.get("http://159.203.29.23/api/posts").then(function(result) {
-  //     $scope.posts = result.data;
-  // }, function(error) {
-  //     alert("There was a problem getting your profile.  Check the logs for details.");
-  //     console.log(error);
-  // });
 
    $scope.addPost = function(newPost) {
 
@@ -126,11 +125,11 @@
       params: {
         'token': $localStorage.token,
         'user_id': $localStorage.user_id,
-        'info': newpost
+        'info': newPost
       }
     };
 
-    $cordovaFileTransfer.upload("http://159.203.29.23/api/phonetodos", $scope.data.imageURI, options).then(function(result) {
+    $cordovaFileTransfer.upload("http://159.203.29.23:8080/api/phonetodos", $scope.data.imageURI, options).then(function(result) {
       // Success!
       alert("Success!");
       $scope.posts = result.data;
