@@ -47,8 +47,7 @@
             $localStorage.user_id = result.data.userid;
             $localStorage.token = result.data.token;
             $scope.loggedIn = true;
-            $state.go("tab.account")
-            alert("Congrats, you logged in with user ID "+result.data.userid);
+            $state.go("tab.favs")
             $scope.modal.hide();
         }
         else {
@@ -72,9 +71,8 @@
 
 })
 
-.controller('DashCtrl', function($scope) {
+.controller('DashCtrl', function($scope, $state, $localStorage) {
   $scope.logout = function() {
-        alert ("hitting logout");
         delete $localStorage.user_id;
         delete $localStorage.token;
         $scope.loggedIn = false;
@@ -102,6 +100,7 @@
 .controller('BrowseCtrl', function($state, $scope, $http, $ionicLoading, $localStorage, $cordovaFileTransfer) {
    $http.get("http://159.203.29.23:8080/api/post").then(function(result) {
       $scope.posts = result.data;
+      console.log(result.data);
   }, function(error) {
       alert("There was a problem getting your profile.  Check the logs for details.");
       console.log(error);
