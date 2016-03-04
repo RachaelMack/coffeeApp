@@ -1,5 +1,5 @@
 <ion-view view-title="Favourites">
-  <ion-content>
+  <ion-content class="padding">
    
   <div class="button-bar">
   <a class="button button-stable">Tea</a>
@@ -9,18 +9,18 @@
 
    <div class="list card" ng-repeat="post in posts">
 
-  <div class="item item-avatar">
+  <div class="item item-avatar headerBackground">
     <img src="img/icon.png">
-    <h2>{{post.title}}</h2>
-    <p>{{post.hashtag}}</p>
+    <h2 class="favTitle">{{post.title}}</h2>
+    <p class="favTags">{{post.hashtag}}</p>
   </div>
 
   <div class="item item-image">
     <img src="http://159.203.29.23:8080/assets/uploads/{{post.photo}}">
   </div>
 
-  <a class="item item-icon-left assertive" href="#/tab/shop">
-    <i class="ion-ios-cart-outline"></i>
+  <a class="item item-icon-left dark footerBackground" href="#/tab/shop">
+    <i class="ion-ios-location"></i>
     {{post.address}}
   </a>
 

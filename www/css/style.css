@@ -1,9 +1,23 @@
-/*body {
-    background-color: #8B572A;
-    text-decoration: 
-}
+.headerBackground {
+    background: #315C65;
+    background: -webkit-linear-gradient(#315C65, #59A4B4); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#315C65, #59A4B4); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#315C65, #59A4B4); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#315C65, #59A4B4); /* Standard syntax */
+ }
 
+.footerBackground {
+    background-color: #E0AE88;
+ }
 
-.background, .background .pane, .background .item, .background .item-complex .item-content{
-    background-color: #8B572A;
-}*/
+.favTitle {
+	font: bold 12px/30px Georgia, serif;
+ 	color: #fff;
+ 	text-transform: uppercase;
+ 	letter-spacing: 1.5px;
+ }
+
+ p.favTags {
+ 	color: #fff;
+ 	letter-spacing: 1px;
+ }
